@@ -11,6 +11,10 @@ partner(s).
 ### INSTALLATION
 Install [VCPKG](https://vcpkg.io/en/), the C++ Package Manager.
 
+Install libpcap. I tried to get this installed via vcpkg, but I couldn't find the 
+targets/packages to integrate it. If someone wants to add that to the CMakeLists.txt
+file, that would be great.
+
 Build as a CMAKE Project
 
 ```
