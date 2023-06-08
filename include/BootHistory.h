@@ -147,7 +147,7 @@ class BootHistory
 			/// Get the unix timestamp of when the session with the given bootTime
 			/// halted.
 
-		map<int, int> getOmittedSessions(set<int> logged) { return map<int, int>; }
+		std::map<int, int> getOmittedSessions(std::set<int> logged) { return {}; }
 			/// Returns all sessions that are not logged for some reason.
 			/// Only the sessions with a boot time later than the first element
 			/// of logged.
