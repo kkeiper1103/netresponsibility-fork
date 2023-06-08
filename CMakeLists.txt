@@ -9,7 +9,7 @@ find_package(Poco REQUIRED COMPONENTS DataSQLite Net Util Zip)
 
 set(SOURCES
     src/BootHistory.cpp src/Bypasses.cpp src/ConfigSubsystem.cpp src/Database.cpp src/Filter.cpp src/History.cpp
-    src/MainApplication.cpp src/MyXml.cpp src/Options.cpp src/Plugin.cpp src/ReportBase.cpp
+    src/MainApplication.cpp src/MyXml.cpp src/Options.cpp src/Plugin.cpp
     src/ReportSubsystem.cpp src/Request.cpp src/Sniffer.cpp src/SnifferSubsystem.cpp src/SnifferThread.cpp
     src/Warnings.cpp)
 
@@ -20,7 +20,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 
-add_library(report SHARED src/Report.cpp)
+add_library(report SHARED src/Report.cpp src/ReportBase.cpp)
 target_include_directories(report PRIVATE include/)
 target_link_libraries(report PRIVATE
     Poco::Foundation Poco::DataSQLite Poco::Net Poco::Util Poco::Zip pcap

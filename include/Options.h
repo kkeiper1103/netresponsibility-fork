@@ -46,7 +46,7 @@
 #define CONCAT(x, y) STRINGIFY(x, y)
 
 #ifndef DATABASEDIR
-#define DATABASEDIR /var/log
+#define DATABASEDIR /opt/netresponsibility
 #endif
 
 #ifndef PKGDATADIR
@@ -61,17 +61,17 @@
 #define PIDDIR /var/run
 #endif
 
-#define DATABASEFILE CONCAT(DATABASEDIR, /net-responsibility.db)
+#define DATABASEFILE CONCAT(DATABASEDIR, /net-responsibility.sqlite)
 #define PIDFILE CONCAT(PIDDIR, /net-responsibility.pid)
 #define CONFIGFILE CONCAT(PKGDATADIR, /config.xml)
 #define BLACKLISTFILE CONCAT(PKGDATADIR, /blacklist.xml)
 #define TXTFILE CONCAT(PKGDATADIR, /txt.xml)
 #define REPORT_DIR CONCAT(PKGDATADIR, /reports/)
-#define REPORT_MODULE CONCAT(PKGLIBDIR, /report.so)	//Make cross-platform
+#define REPORT_MODULE CONCAT(PKGLIBDIR, /libreport.so)	//Make cross-platform
 #define SERVER "www.netresponsibility.com"
 
 #ifndef VERSION
-#define VERSION "0"
+#define VERSION "0.1"
 #endif //VERSION
 
 using Poco::Logger;
