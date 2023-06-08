@@ -13,7 +13,8 @@ Install [VCPKG](https://vcpkg.io/en/), the C++ Package Manager.
 
 Build as a CMAKE Project
 
-```cd netresponsibility
+```
+cd netresponsibility
 cmake -S . -B cmake-build-debug -DCMAKE_TOOLCHAIN_FILE={path to vcpkg}/scripts/buildsystems/vcpkg.cmake
 cmake --build cmake-build-debug
 ```
