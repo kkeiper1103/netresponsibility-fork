@@ -1,0 +1,47 @@
+#!/bin/bash
+# This file is part of Net Responsibility.
+#
+# Net Responsibility is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# Net Responsibility is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Net Responsibility.  If not, see <http://www.gnu.org/licenses/>.
+#
+# postinst will configure Net Responsibility after installation unless
+# already done by previous installation
+# It's called like this: postinst pkgdatadir initdir
+
+pkgdatadir=$1
+initdir=$2
+
+if ! [ -f $pkgdatadir/config.xml ]; then
+  mkdir $pkgdatadir/reports
+  net-responsibility --install
+  
+  # Install init script
+  ln -s -f $pkgdatadir/init.d $initdir/net-responsibility
+  if command -v update-rc.d &>/dev/null # Debian, Ubuntu
+  then
+    update-rc.d net-responsibility defaults
+  elif command -v chkconfig &>/dev/null # Red Hat, Fedora
+  then
+    chkconfig --add net-responsibility
+  elif command -v rc-update &>/dev/null # Gentoo
+  then
+    rc-update add net-responsibility default
+  elif command -v innserv &>/dev/null # OpenSuse
+  then
+    innserv $initdir/net-responsibility
+  fi
+else
+  echo "Using existing configuration"
+fi
+
+net-responsibility --daemon

@@ -1,0 +1,43 @@
+#!/bin/bash
+# This file is part of Net Responsibility.
+#
+# Net Responsibility is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# Net Responsibility is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Net Responsibility.  If not, see <http://www.gnu.org/licenses/>.
+#
+# prerm will uninstall Net Responsibility.
+# It's called like this: prerm pkgdatadir initdir
+
+pkgdatadir=$1
+initdir=$2
+
+if [ -f $initdir/net-responsiblity ]; then
+  $initdir/net-responsibility stop
+fi
+if [ -f $pkgdatadir/config.xml ]; then		
+  net-responsibility --uninstall
+fi
+
+# Uninstall init script
+if command -v update-rc.d &>/dev/null # Debian, Ubuntu
+then
+ update-rc.d -f net-responsibility remove
+elif command -v chkconfig &>/dev/null # Red Hat, Fedora
+then
+ chkconfig --del net-responsibility
+elif command -v rc-update &>/dev/null # Gentoo
+then
+ rc-update delete net-responsibility default
+elif command -v innserv &>/dev/null # OpenSuse
+then
+ innserv -r $initdir/net-responsibility
+fi
