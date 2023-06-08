@@ -1,14 +1,14 @@
------DESCRIPTION-----
-Net Responsibility is intended to be a good open source accountability software
-for all major platforms. It's purpose is to prevent people from certain surfing
-habits by holding them accountable to others. 
-This is done by logging all internet traffic and generating clear reports that
-are emailed regularly to the accountability partner(s).
+# NetResponsibility
+
+### DESCRIPTION 
+Net Responsibility is an open source accountability monitor for all major platforms. 
+It's purpose is to prevent people from certain surfing habits by holding them 
+accountable to others. This is done by logging all internet traffic and 
+generating clear reports that are emailed regularly to the accountability 
+partner(s).
 
 
-
-
------INSTALLATION-----
+### INSTALLATION
 Install [VCPKG](https://vcpkg.io/en/), the C++ Package Manager.
 
 Build as a CMAKE Project
@@ -19,15 +19,20 @@ cmake -S . -B cmake-build-debug -DCMAKE_TOOLCHAIN_FILE={path to vcpkg}/scripts/b
 cmake --build cmake-build-debug
 ```
 
+I like to use clion for building this. In the `Project Settings`, go to `File | Settings | Build, Execution, Deployment | CMake`,
+then add the "-DCMAKE_TOOLCHAIN_FILE" argument in the cmake options box
 
+![CMake Options in CLion](clion-cmake-options.png)
 
------CONTACT-----
+@todo create new / update old installation scripts to run as root
+
+### CONTACT
 Find the source code at https://github.com/kkeiper1103/netresponsibility-fork
 
 
 
 
------LICENSE-----
+### LICENSE
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
@@ -44,8 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 
-
------CONTRIBUTE-----
+### CONTRIBUTE
 If you want to help us out with this project, please read the file DEVELOPERS 
 and contact us. There are several ways in which you can help, depending on 
 your skills.
@@ -53,7 +57,7 @@ your skills.
 
 
 
------CREDITS-----
+### CREDITS
 Net Responsibility was first developed by Scott Severence. Without his efforts 
 this project would probably not be what it is. His code is found in all versions 
 up to 2.0.2.
