@@ -34,6 +34,9 @@ void ConfigSubsystem::reinitialize(Application& app) {
 
 
 void ConfigSubsystem::initialize(Application& app) {
+
+
+
 	if (app.config().getBool("config", false)) {
 		string username = app.config().getString("username", ""),
 			password = app.config().getString("password", "");

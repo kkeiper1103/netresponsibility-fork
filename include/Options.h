@@ -26,7 +26,7 @@
 #define OPTIONS_H
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
 #include <map>
 
@@ -47,6 +47,14 @@
 
 #ifndef DATABASEDIR
 #define DATABASEDIR /var/log
+#endif
+
+#ifndef PKGDATADIR
+#define PKGDATADIR /opt/netresponsibility
+#endif
+
+#ifndef PKGLIBDIR
+#define PKGLIBDIR /opt/netresponsibility
 #endif
 
 #ifndef PIDDIR
