@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This file is part of Net Responsibility.
 #
 # Net Responsibility is free software: you can redistribute it and/or modify
@@ -18,15 +18,22 @@
 # already done by previous installation
 # It's called like this: postinst pkgdatadir initdir
 
-pkgdatadir=$1
+installdir="${1:-/opt/netresponsibility}"
 initdir=$2
 
-if ! [ -f $pkgdatadir/config.xml ]; then
-  mkdir $pkgdatadir/reports
+if [ "$EUID" != 0 ]; then
+  echo "Installation Script Has To Be Ran As Root!"
+  exit;
+fi
+
+
+if ! [ -f $installdir/config.xml ]; then
+  mkdir $installdir/reports
   net-responsibility --install
   
   # Install init script
-  ln -s -f $pkgdatadir/init.d $initdir/net-responsibility
+  cp $(pwd)/init.d $installdir/init.d
+  ln -s -f $installdir/init.d $initdir/net-responsibility
   if command -v update-rc.d &>/dev/null # Debian, Ubuntu
   then
     update-rc.d net-responsibility defaults

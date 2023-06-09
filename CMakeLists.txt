@@ -28,3 +28,6 @@ target_include_directories(report PRIVATE include/ ${PCAP_INCLUDE_DIR})
 target_link_libraries(report PRIVATE
     Poco::Foundation Poco::DataSQLite Poco::Net Poco::Util Poco::Zip ${PCAP_LIBRARY}
 )
+
+
+# test stuff to try new rebuild
